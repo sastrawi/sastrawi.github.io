@@ -29,14 +29,32 @@
                 <br />
                 <button class="btn btn-primary" id="btn-stem">Stem</button>
                 <br />
+                <br />
+                
+                <blockquote>
                 <p id="stem-result">
                 </p>
+                </blockquote>
+
+                <br />
+                <strong>Contoh:</strong>
+                <ul>
+                    <li><a href="#" class="stem-example">Perekonomian Indonesia sedang dalam pertumbuhan yang membanggakan</a></li>
+                    <li><a href="#" class="stem-example">Dalam aktivitas sehari-hari, pengguna internet di Indonesia menggunakan Bahasa Indonesia sebagai bahasa utama.</a></li>
+                </ul>
+                <br />
             </div>
             <div class="col-md-6">
             </div>
         </div>
     </div>
     <script>
+        $(document).on('click', '.stem-example', function(e) {
+            e.preventDefault();
+            $('#txt').val($(this).html());
+            $('#btn-stem').click();
+        });
+        
         $(function() {
             $('#btn-stem').click(function(e) {
                 e.preventDefault();
