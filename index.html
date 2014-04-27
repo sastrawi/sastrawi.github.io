@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sastrawi by sastrawi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Sastrawi</h1>
+        <p>High quality PHP library for stemming Indonesian Language (Bahasa)</p>
+
+        <p class="view"><a href="https://github.com/sastrawi/sastrawi">View the Project on GitHub <small>sastrawi/sastrawi</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/sastrawi/sastrawi/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sastrawi/sastrawi/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sastrawi/sastrawi">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="sastrawi" class="anchor" href="#sastrawi"><span class="octicon octicon-link"></span></a>Sastrawi</h1>
+
+<p>Sastrawi is a simple PHP library which provides stemming of words in Indonesian Language (Bahasa).
+Despite its simplicity, this library is  designed to be high quality and well documented.
+For more information in english, see <a href="https://github.com/andylib/sastrawi/blob/master/README.en.md">README</a>.</p>
+
+<table>
+<thead><tr>
+<th>Development</th>
+<th>Master</th>
+<th>Releases</th>
+<th>Statistics</th>
+</tr></thead>
+<tbody><tr>
+<td>
+<a href="https://travis-ci.org/sastrawi/sastrawi"><img src="https://travis-ci.org/sastrawi/sastrawi.svg?branch=development" alt="Build Status"></a> <a href="https://scrutinizer-ci.com/g/sastrawi/sastrawi/"><img src="https://scrutinizer-ci.com/g/sastrawi/sastrawi/badges/coverage.png?s=942cb014be9bbbf41e62c15389663f4253f5efac" alt="Code Coverage"></a> <a href="https://scrutinizer-ci.com/g/sastrawi/sastrawi/"><img src="https://scrutinizer-ci.com/g/sastrawi/sastrawi/badges/quality-score.png?s=152027ad0516653ff4eb5b05bff7266aeb600bfd" alt="Scrutinizer Code Quality"></a>
+</td>
+<td><a href="https://travis-ci.org/sastrawi/sastrawi"><img src="https://travis-ci.org/sastrawi/sastrawi.svg?branch=master" alt="Build Status"></a></td>
+<td>
+<a href="https://packagist.org/packages/sastrawi/sastrawi"><img src="https://poser.pugx.org/sastrawi/sastrawi/v/unstable.png" alt="Latest Unstable Version"></a> <a href="https://packagist.org/packages/sastrawi/sastrawi"><img src="https://poser.pugx.org/sastrawi/sastrawi/v/stable.png" alt="Latest Stable Version"></a>
+</td>
+<td><a href="https://packagist.org/packages/sastrawi/sastrawi"><img src="https://poser.pugx.org/sastrawi/sastrawi/downloads.png" alt="Total Downloads"></a></td>
+</tr></tbody>
+</table><h2>
+<a name="stemming" class="anchor" href="#stemming"><span class="octicon octicon-link"></span></a>Stemming</h2>
+
+<p>Indonesia menempati posisi ke-4 negara berpenduduk terbanyak di dunia. Berdasarkan <a href="http://www.thejakartapost.com/news/2013/06/18/facebook-has-64m-active-indonesian-users.html">sumber</a>, pada 2013 tercatat Lebih dari 64 juta pengguna facebook berasal dari Indonesia.</p>
+
+<p>Dalam aktivitas sehari-hari, pengguna internet di Indonesia menggunakan Bahasa Indonesia sebagai bahasa utama. Oleh sebab itu, para <em>developer</em> membutuhkan suatu cara untuk meningkatkan kualitas pencarian dalam bahasa Indonesia. Salah satu cara itu adalah dengan melakukan <em>stemming</em>.</p>
+
+<p><em>Stemming</em> adalah proses mengubah kata berimbuhan menjadi kata dasar. Contohnya:</p>
+
+<ul>
+<li>menahan =&gt; tahan</li>
+<li>berbalas-balasan =&gt; balas</li>
+</ul><h2>
+<a name="contoh-kasus" class="anchor" href="#contoh-kasus"><span class="octicon octicon-link"></span></a>Contoh kasus</h2>
+
+<p>Katakanlah sebuah <em>blog post</em> berisi:</p>
+
+<pre><code>Rakyat memenuhi halaman gedung untuk menyuarakan isi hatinya.
+</code></pre>
+
+<p>Pencarian dengan <em>query</em> di bawah ini tidak akan menemukan <em>post</em> di atas,</p>
+
+<div class="highlight highlight-sql"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">posts</span> <span class="k">WHERE</span> <span class="n">content</span> <span class="k">LIKE</span> <span class="s1">'%suara%'</span>
+</pre></div>
+
+<p>Bahkan metode <em>fuzzy search</em> atau <em>full text search</em> membutuhkan proses <em>stemming</em> untuk meningkatkan kualitas pencarian. Salah satu cara untuk meningkatkannya yaitu dengan menanggalkan imbuhan-imbuhan hingga hanya menyisakan kata dasar seperti berikut:</p>
+
+<pre><code>rakyat penuh halaman gedung suara isi hati
+</code></pre>
+
+<p>Lalu kata kunci pencarian juga dijadikan kata dasar:</p>
+
+<pre><code>Bersuara =&gt; suara
+</code></pre>
+
+<h2>
+<a name="tujuan" class="anchor" href="#tujuan"><span class="octicon octicon-link"></span></a>Tujuan</h2>
+
+<ul>
+<li>Mempunyai sebuah <em>library PHP</em> yang berkualitas tinggi untuk memudahkan <em>stemming</em> Bahasa Indonesia.</li>
+<li>Mudah diintegrasikan dengan <em>framework</em> / <em>package</em> lainnya.</li>
+<li>Mempunyai <em>API</em> yang sederhana dan mudah digunakan.</li>
+</ul><h2>
+<a name="cara-install" class="anchor" href="#cara-install"><span class="octicon octicon-link"></span></a>Cara Install</h2>
+
+<p>Sastrawi dapat diinstall dengan <a href="https://getcomposer.org">Composer</a>. Di <code>composer.json</code> Anda, tambahkan require sastrawi:</p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"require"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"sastrawi/sastrawi"</span><span class="p">:</span> <span class="s2">"*"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Kemudian jalankan <code>php composer.phar install</code> atau <code>php composer.phar update</code> dari <code>command line</code>. Jika Anda masih belum memahami bagaimana cara menggunakan Composer, silahkan baca <a href="https://getcomposer.org/doc/00-intro.md">Getting Started with Composer</a>.</p>
+
+<h2>
+<a name="penggunaan" class="anchor" href="#penggunaan"><span class="octicon octicon-link"></span></a>Penggunaan</h2>
+
+<p>Copy kode berikut di directory project anda. Lalu jalankan file tersebut.</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// demo.php</span>
+
+<span class="c1">// include composer autoloader</span>
+<span class="k">require_once</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="c1">// create stemmer</span>
+<span class="nv">$stemmerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Sastrawi\Stemmer\StemmerFactory</span><span class="p">();</span>
+<span class="nv">$stemmer</span>  <span class="o">=</span> <span class="nv">$stemmerFactory</span><span class="o">-&gt;</span><span class="na">createStemmer</span><span class="p">();</span>
+
+<span class="c1">// stem</span>
+<span class="nv">$sentence</span> <span class="o">=</span> <span class="s1">'Perekonomian Indonesia sedang dalam pertumbuhan yang membanggakan'</span><span class="p">;</span>
+<span class="nv">$output</span>   <span class="o">=</span> <span class="nv">$stemmer</span><span class="o">-&gt;</span><span class="na">stem</span><span class="p">(</span><span class="nv">$sentence</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$output</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="c1">// will print:</span>
+<span class="c1">// ekonomi indonesia sedang dalam tumbuh yang bangga</span>
+</pre></div>
+
+<h2>
+<a name="lisensi" class="anchor" href="#lisensi"><span class="octicon octicon-link"></span></a>Lisensi</h2>
+
+<p>The MIT License (MIT). Lihat <a href="https://github.com/sastrawi/sastrawi/blob/master/LICENSE">License File</a> untuk informasi lebih lengkap.</p>
+
+<h2>
+<a name="pustaka" class="anchor" href="#pustaka"><span class="octicon octicon-link"></span></a>Pustaka</h2>
+
+<p>Algoritma yang digunakan pada <em>library</em> ini adalah hak intelektual masing-masing pemiliknya yang tertera di bawah ini.
+Lalu untuk meningkatkan kualitas kode, algoritma tersebut diterapkan ke dalam <em>Object Oriented Design</em>.</p>
+
+<ul>
+<li>Algoritma Nazief dan Adriani</li>
+<li>Asian J. (2007) “Effective Techniques for Indonesian Text Retrieval”. PhD thesis School of Computer Science and Information Technology RMIT University Australia</li>
+<li>Arifin, A.Z., I.P.A.K. Mahendra dan H.T. Ciptaningtyas. 2009. "Enhanced Confix Stripping Stemmer and Ants Algorithm for Classifying News Document in Indonesian Language", Proceeding of International Conference on Information &amp; Communication Technology and Systems (ICTS)</li>
+<li>A. D. Tahitoe, D. Purwitasari. "Implementasi Modifikasi Enhanced Confix Stripping Stemmer Untuk Bahasa Indonesia dengan Metode Corpus Based Stemming", Institut Teknologi Sepuluh Nopember (ITS) – Surabaya, 60111, Indonesia</li>
+</ul><h2>
+<a name="informasi-lebih-lanjut" class="anchor" href="#informasi-lebih-lanjut"><span class="octicon octicon-link"></span></a>Informasi Lebih Lanjut</h2>
+
+<ul>
+<li><a href="http://sastrawi.github.io/sastrawi-api-doc/master/">API Documentation</a></li>
+<li><a href="https://github.com/sastrawi/sastrawi/wiki/FAQ">FAQ</a></li>
+<li><a href="https://github.com/sastrawi/sastrawi/wiki">Wiki</a></li>
+<li><a href="https://github.com/sastrawi/sastrawi/issues/milestones">Roadmap</a></li>
+<li><a href="https://github.com/sastrawi/sastrawi/issues">Bug Report, Questions, Ideas</a></li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sastrawi">sastrawi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
