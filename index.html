@@ -14,6 +14,17 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <style>
+        h3 {
+            color: #111;
+            font-weight: bold;
+            padding: 0.5em 0 1em 0;
+        }
+
+        h2 small a {
+            color: inherit;
+        }
+    </style>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -21,13 +32,33 @@
   </head>
   <body>
     <div class="container">
-        <h1>Sastrawi Demo</h1>
+        <h1>Sastrawi</h1>
+        <h2><small>PHP library untuk <a href="https://github.com/sastrawi/sastrawi" title="Sastrawi | High quality PHP library to stem words in Indonesian (Bahasa)">stemming Bahasa Indonesia</a></small></h2>
         <a href="https://travis-ci.org/sastrawi/sastrawi"><img src="https://travis-ci.org/sastrawi/sastrawi.svg?branch=master" /></a>
         <a href="https://github.com/sastrawi/sastrawi"><img src="http://img.shields.io/packagist/v/sastrawi/sastrawi.svg" /></a>
         <hr />
-        <br />
         <div class="row">
             <div class="col-md-6">
+                <h3>Stemming</h3>
+                <p>
+                Stemming adalah proses mengubah kata berimbuhan menjadi kata dasar. Contohnya:
+                </p>
+                <ul>
+                    <li>Menahan =&gt; tahan</li>
+                    <li>Berbalas-balasan =&gt; balas</li>
+                </ul>
+                <h3>Lebih Lanjut Tentang Sastrawi</h3>
+                <ul>
+                    <li><a href="https://github.com/sastrawi/sastrawi">Sastrawi di github</a></li>
+                    <li><a href="https://github.com/sastrawi/sastrawi#cara-install">Cara Install</a></li>
+                    <li><a href="https://github.com/sastrawi/sastrawi#penggunaan">Penggunaan</a></li>
+                    <li><a href="http://sastrawi.github.io/sastrawi-api-doc/master/">API Documentation</a></li>
+                    <li><a href="https://github.com/sastrawi/sastrawi/wiki">Wiki</a></li>
+                    <li><a href="https://github.com/sastrawi/sastrawi/issues">Bug Report, Questions, Ideas</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>Demo</h3>
                 <textarea rows="3" type="text" class="form-control" name="txt" id="txt" placeholder="Masukkan text Bahasa Indonesia untuk distem"></textarea>
                 <br />
                 <button class="btn btn-primary" id="btn-stem">Stem</button>
@@ -47,14 +78,6 @@
                 </ul>
                 <br />
             </div>
-            <div class="col-md-6">
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-        <p class="col-md-6 footer" style="text-align: center">
-            <a href="https://github.com/sastrawi/sastrawi" title="Sastrawi | High quality PHP library to stem words in Indonesian (Bahasa)">About Sastrawi</a>
-        </p>
         </div>
     </div>
     <script>
