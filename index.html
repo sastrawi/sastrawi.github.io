@@ -94,21 +94,34 @@
             $('#txt').val($(this).html());
             $('#btn-stem').click();
         });
-        
-        $(function() {
-            $('#btn-stem').click(function(e) {
-                e.preventDefault();
-                var text = $('#txt').val();
 
-                callback = function(data) {
-                    $('#stem-result').html(data);
-                }
+        $(document).on('click', '#btn-stem', function(e) {
+            e.preventDefault();
+            var text = $('#txt').val();
 
-                var script = document.createElement('script');
-                script.src = 'http://107.170.70.183/sastrawi/stem-jsonp.php?text=' + text;
-                document.body.appendChild(script);
-            });
+            if (!text) {
+                $('#stem-result').html('');
+            }
+
+            callback = function(data) {
+                $('#stem-result').html(data);
+            }
+
+            var script = document.createElement('script');
+            script.src = 'http://107.170.70.183/sastrawi/stem-jsonp.php?text=' + text;
+            document.body.appendChild(script);
         });
+
+        var timeout;
+        $(document).on('keydown', '#txt', function() {
+            clearTimeout(timeout);
+            
+            timeout = setTimeout(function() {
+                $('#btn-stem').click();
+            }, 1000);
+        });
+
+        $('#btn-stem').click();
     </script>
   </body>
 </html>
