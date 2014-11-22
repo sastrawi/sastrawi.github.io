@@ -104,6 +104,7 @@
         $(document).on('click', '#btn-detect', function(e) {
             e.preventDefault();
             var text = $('#txt').val();
+            text = text.replace(/(?:\r\n|\r|\n)/g, '  ');
 
             if (!text) {
                 $('#result').html('');
