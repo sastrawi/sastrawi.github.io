@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+
+    <title>Sastrawi Tokenizer | Library PHP untuk memecah teks Bahasa Indonesia menjadi token-token | NLP Tokenization</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sastrawi Tokenize | Library PHP untuk memcah teks Bahasa Indonesia menjadi token-token | NLP Tokenization">
+    <meta name="author" content="Andy Librian, and Sastrawi contributors">
+    <meta name="keywords" content="sastrawi, library, php, tokenization, tokenizer, text segmentation, natural language processing">
+    <meta name="copyright" content="2014 Andy Librian">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <style>
+        h3 {
+            color: #111;
+            font-weight: bold;
+            padding: 0.5em 0 1em 0;
+        }
+
+        h2 small a {
+            color: inherit;
+        }
+
+        h1 a {
+            color: #000;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <h1><a href="https://github.com/sastrawi/tokenizer" title="Sastrawi Tokenizer di github">Sastrawi Tokenizer</a></h1>
+        <h2><small>PHP library untuk <a href="https://github.com/sastrawi/tokenizer" title="Tokenization Bahasa Indonesia">memecah kalimat Bahasa Indonesia menjadi token-token.</a></small></h2>
+        <a href="https://travis-ci.org/sastrawi/tokenizer"><img src="https://travis-ci.org/sastrawi/tokenizer.svg?branch=master" /></a>
+        <a href="https://github.com/sastrawi/tokenizer"><img src="http://img.shields.io/packagist/v/sastrawi/tokenizer.svg" /></a>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Tokenization</h3>
+                <p>
+                Tokenization adalah proses memecah kalimat menjadi token-token, contoh:
+                </p>
+                <blockquote>
+                    Ini kalimat pertama. Ini kalimat kedua.
+                </blockquote>
+                <p>
+                    akan dipecah menjadi:
+                </p>
+                <ul>
+                    <li>Ini</li>
+                    <li>kalimat</li>
+                    <li>pertama</li>
+                    <li>.</li>
+                    <li>Ini</li>
+                    <li>kalimat</li>
+                    <li>kedua</li>
+                    <li>.</li>
+                </ul>
+                <h3>Lebih Lanjut Mengenai Sastrawi Tokenizer</h3>
+                <ul>
+                    <li><a href="https://github.com/sastrawi/tokenizer">Source code</a></li>
+                    <li><a href="https://github.com/sastrawi/tokenizer#cara-install">Cara Install</a></li>
+                    <li><a href="https://github.com/sastrawi/tokenizer#penggunaan">Penggunaan</a></li>
+                    <li><a href="https://github.com/sastrawi/tokenizer/wiki">Wiki</a></li>
+                    <li><a href="https://github.com/sastrawi/tokenizer/issues">Bug Report, Questions, Ideas</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>Demo</h3>
+                <textarea rows="3" type="text" class="form-control" name="txt" id="txt" placeholder="Masukkan teks Bahasa Indonesia yang akan dipecah"></textarea>
+                <br />
+                <button class="btn btn-primary" id="btn-tokenize">Pecah jadi token</button>
+                <br />
+                <br />
+                
+                <blockquote>
+                <p id="result">
+                </p>
+                </blockquote>
+
+                <br />
+                <strong>Contoh:</strong>
+                <ul>
+                    <li><a href="#" class="text-example">Ini ibu Budi. Itu ayah Rudi.</a></li>
+                    <li><a href="#" class="text-example">Jangan makan terlalu banyak! Kamu ingin gemuk?!</a></li>
+                    <li><a href="#" class="text-example">Budi pergi ke Jl. KH. Mukmin no. 67 Surabaya. Dia dipanggil untuk interview.</a></li>
+                </ul>
+                <br />
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).on('click', '.text-example', function(e) {
+            e.preventDefault();
+            $('#txt').val($(this).html());
+            $('#btn-tokenize').click();
+        });
+
+        $(document).on('click', '#btn-tokenize', function(e) {
+            e.preventDefault();
+            var text = $('#txt').val();
+            text = text.replace(/(?:\r\n|\r|\n)/g, '  ');
+
+            if (!text) {
+                $('#result').html('');
+            }
+
+            callback = function(data) {
+                $('#result').html(data.join(" "));
+            }
+
+            var script = document.createElement('script');
+            script.src = 'http://107.170.70.183/sastrawi-tokenizer/tokenize-jsonp.php?text=' + text;
+            document.body.appendChild(script);
+        });
+
+        var timeout;
+        $(document).on('keydown', '#txt', function() {
+            clearTimeout(timeout);
+            
+            timeout = setTimeout(function() {
+                $('#btn-tokenize').click();
+            }, 1000);
+        });
+
+        $('#btn-tokenize').click();
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50867400-1', 'sastrawi.github.io');
+      ga('send', 'pageview');
+
+    </script>
+
+  </body>
+</html>
